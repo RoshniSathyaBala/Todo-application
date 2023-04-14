@@ -1,0 +1,140 @@
+package list;
+
+import java.util.Set;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Todo {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\senth\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();	
+//     Launching website		
+		driver.get("https://todo-list-login.firebaseapp.com/");
+		driver.manage().window().maximize();
+		String parentWindow= driver.getWindowHandle();
+//     Sign in with github option		 
+		WebElement githubButton = driver.findElement(By.xpath("//a[@ng-click='login.loginWithGithub()']"));
+		githubButton.click();
+        Thread.sleep(5000);
+//     Switch contol to child window for login         
+        
+	Set<String> newWindow = driver.getWindowHandles();
+        for (String childWindow : newWindow) {
+        	driver.switchTo().window(childWindow);
+			}
+          Thread.sleep(5000);
+//    Login credentials
+        WebElement username = driver.findElement(By.id("login_field"));
+        username.sendKeys("roshnisathyabala.qa@gmail.com");
+        
+        	WebElement password = driver.findElement(By.id("password"));
+        	password.sendKeys("Testing1234test");
+//    Sign in button
+        	WebElement signIn = driver.findElement(By.name("commit"));
+        	signIn.click();
+//   Switch back access to main window
+
+        	driver.switchTo().window(parentWindow);
+           	Thread.sleep(5000);
+        	
+        	Thread.sleep(5000);
+        	
+//         Adding of new list upto 10
+        	WebElement textBox1 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox1.sendKeys("integer");
+        	
+        	WebElement addList1 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList1.click();
+        	
+        	WebElement textBox2 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox2.sendKeys("string");
+        	
+        	WebElement addList2 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList2.click();
+        	
+        	WebElement textBox3 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox3.sendKeys("value");
+        	
+        	WebElement addList3 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList3.click();
+        	
+        	WebElement textBox4 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox4.sendKeys("boolean");
+        	
+        	WebElement addList4 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList4.click();
+        	
+        	WebElement textBox5 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox5.sendKeys("byte");
+        	
+        	WebElement addList5 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList5.click();
+        	
+        	WebElement textBox6 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox6.sendKeys("character");
+        	
+        	WebElement addList6 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList6.click();
+        	
+        	WebElement textBox7 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox7.sendKeys("alphabets");
+        	
+        	WebElement addList7 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList7.click();
+        	
+        	WebElement textBox8 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox8.sendKeys("email");
+        	
+        	WebElement addList8 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList8.click();
+        	
+        	WebElement textBox9 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox9.sendKeys("login");
+        	
+        	WebElement addList9 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList9.click();
+        	
+        	WebElement textBox10 = driver.findElement(By.xpath("//input[@ng-model='home.list']"));
+        	textBox10.sendKeys("string");
+        	
+        	WebElement addList10 = driver.findElement(By.xpath("//button[@ng-click='home.list && home.add()']"));
+        	addList10.click();
+     	Thread.sleep(2000);
+	
+//      Sign Out 1st time
+       	WebElement signOut = driver.findElement(By.xpath("//button[@ng-click='home.signOut()']"));
+    	signOut.click();
+    	Thread.sleep(5000);
+	
+//      Deleting web elements 5 - 10	
+        	WebElement signIn2 = driver.findElement(By.xpath("//a[@ng-click='login.loginWithGithub()']"));
+        	Thread.sleep(5000);
+        	WebElement option1 = driver.findElement(By.xpath("/html/body/ng-view/div/div[3]/div/ul/li[1]/div/div[5]/button"));
+        	option1.click();
+        	
+        	WebElement option2 = driver.findElement(By.xpath("/html/body/ng-view/div/div[3]/div/ul/li[1]/div/div[6]/button"));
+        	option2.click();
+        	
+        	WebElement option3 = driver.findElement(By.xpath("/html/body/ng-view/div/div[3]/div/ul/li[1]/div/div[7]/button"));
+        	option3.click();
+        	
+        	WebElement option4 = driver.findElement(By.xpath("/html/body/ng-view/div/div[3]/div/ul/li[1]/div/div[8]/button"));
+        	option4.click();
+        	
+        	WebElement option5 = driver.findElement(By.xpath("/html/body/ng-view/div/div[3]/div/ul/li[1]/div/div[9]/button"));
+        	option5.click();
+        	
+        	WebElement option6 = driver.findElement(By.xpath("/html/body/ng-view/div/div[3]/div/ul/li[1]/div/div[10]/button"));
+        	option6.click();
+//      Sign out 2nd time		
+        	
+        	WebElement signOut2 = driver.findElement(By.xpath("//button[@ng-click='home.signOut()']"));
+        	signOut2.click();
+	}
+
+}
